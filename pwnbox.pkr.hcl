@@ -13,7 +13,7 @@ packer {
 
 variable "iso_path_local" {
   type    = string
-  default = "/home/lzmk/Downloads/isos/archlinux-2025.10.01-x86_64.iso"
+  default = "./isos/archlinux-2025.10.01-x86_64.iso"
 }
 
 variable "iso_url" {
@@ -110,7 +110,7 @@ build {
   provisioner "shell" {
     execute_command   = "{{ .Vars }} COUNTRY=SG sudo -E -S bash '{{ .Path }}'"
     expect_disconnect = true
-    script            = "scripts/install-systemdboot.sh"
+    script            = "scripts/install-base.sh"
   }
 
   post-processor "vagrant" {
